@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnCalcular: Button
     private lateinit var textResultado: TextView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -38,14 +38,16 @@ class MainActivity : AppCompatActivity() {
 
         val resultadoValidacao = validarCampos(precoAlcool, precoGasolina)
 
-        if (resultadoValidacao) {
+        if ( resultadoValidacao ) {
             // Se (valorAlcool / valorGAsolina) >= 0.7 é melhor usar Gasolina
             // senão, é melhor usar álcool
 
             val precoAlcoolDouble = precoAlcool.toDouble()
             val precoGasolinaDouble = precoGasolina.toDouble()
+
             val resultado = precoAlcoolDouble / precoGasolinaDouble
-            if (resultado >= 0.7) {
+
+            if ( resultado >= 0.7 ) {
                 textResultado.text = " Melhor usar GASOLINA"
             } else {
                 textResultado.text = " Melhor usar ÁLCOOL"
@@ -58,10 +60,10 @@ class MainActivity : AppCompatActivity() {
         textInputAlcool.error = null
         textInputGasolina.error = null
 
-        if (pAlcool.isEmpty()) {
+        if ( pAlcool.isEmpty() ) {
             textInputAlcool.error = "Digite o preço do álcool"
             return false
-        } else if (pGasolina.isEmpty()) {
+        } else if ( pGasolina.isEmpty() ) {
             textInputGasolina.error = "Digite o preço da gasolina"
             return false
         }
