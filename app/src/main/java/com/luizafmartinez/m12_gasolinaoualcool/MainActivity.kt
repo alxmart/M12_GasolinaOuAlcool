@@ -1,5 +1,6 @@
 package com.luizafmartinez.m12_gasolinaoualcool
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -47,13 +48,35 @@ class MainActivity : AppCompatActivity() {
 
             val resultado = precoAlcoolDouble / precoGasolinaDouble
 
+
             if ( resultado >= 0.7 ) {
-                textResultado.text = " Melhor usar GASOLINA"
+                //textResultado.text = "GASOLINA"
+                textResultado.text = "GASOLINA"
             } else {
-                textResultado.text = " Melhor usar ÁLCOOL"
+                //textResultado.text = "ÁLCOOL"
+                 textResultado.text = "ÁLCOOL"
             }
         }
-    }
+
+        var resumo = textResultado.text.toString()
+
+        textResultado.text = ""
+
+        val intent = Intent(
+            this,
+            ResultadoActivity::class.java
+        )
+
+        if (precoAlcool.isNotEmpty() && precoGasolina.isNotEmpty()) {
+
+            intent.putExtra("gasolina", precoGasolina.toDouble() )
+            intent.putExtra("alcool", precoAlcool.toDouble() )
+            intent.putExtra("resultado", resumo.toString() )
+
+            startActivity(intent)
+        }
+
+        }
 
     private fun validarCampos(pAlcool: String, pGasolina: String): Boolean {
 
