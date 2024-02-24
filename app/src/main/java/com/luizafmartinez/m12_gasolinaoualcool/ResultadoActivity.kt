@@ -26,7 +26,6 @@ class ResultadoActivity : AppCompatActivity() {
 
         if (bundle != null) {
 
-        }
             val gasolina = bundle?.getDouble("gasolina")
             val alcool = bundle?.getDouble("alcool")
             val result = bundle?.getString("resultado")
@@ -36,9 +35,9 @@ class ResultadoActivity : AppCompatActivity() {
             textoFinal.text = "$result"
 
 
-        btnVoltar.setOnClickListener {
-            finish()
+            btnVoltar.setOnClickListener {
+                finish()
+            }
         }
-
     }
 }

@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         val resultadoValidacao = validarCampos(precoAlcool, precoGasolina)
 
-        if ( resultadoValidacao ) {
+        if (resultadoValidacao) {
             // Se (valorAlcool / valorGAsolina) >= 0.7 é melhor usar Gasolina
             // senão, é melhor usar álcool
 
@@ -48,13 +48,12 @@ class MainActivity : AppCompatActivity() {
 
             val resultado = precoAlcoolDouble / precoGasolinaDouble
 
-
-            if ( resultado >= 0.7 ) {
+            if (resultado >= 0.7) {
                 //textResultado.text = "GASOLINA"
                 textResultado.text = "GASOLINA"
             } else {
                 //textResultado.text = "ÁLCOOL"
-                 textResultado.text = "ÁLCOOL"
+                textResultado.text = "ÁLCOOL"
             }
         }
 
@@ -69,24 +68,24 @@ class MainActivity : AppCompatActivity() {
 
         if (precoAlcool.isNotEmpty() && precoGasolina.isNotEmpty()) {
 
-            intent.putExtra("gasolina", precoGasolina.toDouble() )
-            intent.putExtra("alcool", precoAlcool.toDouble() )
-            intent.putExtra("resultado", resumo.toString() )
+            intent.putExtra("gasolina", precoGasolina.toDouble())
+            intent.putExtra("alcool", precoAlcool.toDouble())
+            intent.putExtra("resultado", resumo)
 
             startActivity(intent)
         }
 
-        }
+    }
 
     private fun validarCampos(pAlcool: String, pGasolina: String): Boolean {
 
         textInputAlcool.error = null
         textInputGasolina.error = null
 
-        if ( pAlcool.isEmpty() ) {
+        if (pAlcool.isEmpty()) {
             textInputAlcool.error = "Digite o preço do álcool"
             return false
-        } else if ( pGasolina.isEmpty() ) {
+        } else if (pGasolina.isEmpty()) {
             textInputGasolina.error = "Digite o preço da gasolina"
             return false
         }
